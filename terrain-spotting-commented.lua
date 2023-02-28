@@ -55,13 +55,13 @@ TIC=function()
   for Z=300,72,-1 do -- range adjusted to cover visible area
     for X=72,-72,-1 do
       -- Lookup Y from noise table:
-      noiseX=(Z+t)%size -- offset by time
-      noiseY=(X-scroll//1)%size -- offset by cos scroll
-      Y=noise[noiseX+noiseY*size+1]+40
+      local noiseX=(Z+t)%size -- offset by time
+      local noiseY=(X-scroll//1)%size -- offset by cos scroll
+      local Y=noise[noiseX+noiseY*size+1]+40
 
       -- Because the scroll offset is applied within the low resolution voxel grid,
       -- shift x by fractional part to counter jerkiness
-      X1=(X+scroll%1)
+      local X1=(X+scroll%1)
 
       if Y>seaLevel then
         -- Water:
@@ -79,8 +79,8 @@ TIC=function()
       end
 
       -- Apply perspective and offset to get screen coords
-      x=X1/Z*zoom+120
-      y=Y1/Z*zoom-120
+      local x=X1/Z*zoom+120
+      local y=Y1/Z*zoom-120
 
       circ(x,y,2,color)
 
